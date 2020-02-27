@@ -136,7 +136,7 @@ class Add(Screen):
         self.btn_yes.grid(row = 7, column = 0)
         
         self.btn_yes = tk.Button(self, text = "No")
-        self.btn_yes.grid(row = 7, column = 1)     
+        self.btn_yes.grid(row = 7, column = 1)  
 class EditSelect(tk.Frame):
     
     def __init__(self, parent):
@@ -168,14 +168,12 @@ class EditSelect(tk.Frame):
                 break
             screens[3].update()
             self.parent.destroy()
-    def update(self):
-        entry = games[self.edit.keys]
-        self.ent_genre.delete(0, "end")
-        self.ent_genre.insert(0, entry[0])
+
         
 class Edit(Screen):
         
     def __init__(self):
+
         Screen.__init__(self)
         #add title
         self.lbl_title = tk.Label(self, text = "Edit a game", font = ("Ariel", "20"))
@@ -249,7 +247,25 @@ class Edit(Screen):
         self.btn_yes.grid(row = 7, column = 0)
         
         self.btn_yes = tk.Button(self, text = "No")
-        self.btn_yes.grid(row = 7, column = 1)     
+        self.btn_yes.grid(row = 7, column = 1)
+        
+        def update(self):
+            entry = games[self.edit.keys]
+            self.ent_genre.delete(0, "end")
+            self.ent_genre.insert(0, entry[0])
+        
+        def submit_edit(self):
+            entry = []
+            entry.append(self.ent_genre.get())
+            entry.append(self.ent_developer.get())
+            entry.append(self.ent_year.get())
+            entry.append(self.ent_price.get())    
+            entry.append(self.ent_title.get())
+            entry.append(self.ent_publisher.get())
+            entry.append(self.ent_system.get())
+            entry.append(self.ent_rating.get())
+            entry.append(self.scr_holes.get())
+            games[self.edit_key] = entry
 class RemoveSelect(tk.Frame):
     
     def __init__(self, parent):
